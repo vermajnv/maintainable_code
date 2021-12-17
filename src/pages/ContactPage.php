@@ -2,7 +2,9 @@
 
 namespace pages;
 
-class ContactPage 
+use contract\WebPage;
+
+class ContactPage implements WebPage
 {
     private $title, $header, $content, $footer;
 
@@ -14,7 +16,7 @@ class ContactPage
         $this->footer = $data['footer'];
     }
 
-    public function buildContactPage()
+    public function buildWebPage()
     {
         $page = $this->contactPageHeader() . PHP_EOL;
         $page .= $this->contactPageContent(). PHP_EOL;

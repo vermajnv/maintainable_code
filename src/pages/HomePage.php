@@ -2,7 +2,9 @@
 
 namespace pages;
 
-class HomePage 
+use contract\WebPage;
+
+class HomePage implements WebPage 
 {
     private $title, $header, $content, $footer;
 
@@ -14,7 +16,7 @@ class HomePage
         $this->footer = $data['footer'];
     }
 
-    public function buildHomePage()
+    public function buildWebPage()
     {
         $page = $this->homePageHeader() . PHP_EOL;
         $page .= $this->homePageContent(). PHP_EOL;

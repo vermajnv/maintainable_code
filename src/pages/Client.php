@@ -5,12 +5,7 @@ require('./vendor/autoload.php');
 use pages\{HomePage, ContactPage};
 
 function printWebPage($page) {
-    if($page instanceof HomePage){
-        $pageContent = $page->buildHomePage();
-    }
-    elseif($page instanceof ContactPage){
-        $pageContent = $page->buildContactPage();
-    }
+    $pageContent = $page->buildWebPage();
     echo $pageContent;
 }
 
