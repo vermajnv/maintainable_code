@@ -1,34 +1,24 @@
 <?php
 
-namespace pages;
+namespace App\pages;
 
-use contract\WebPage;
+use App\partial\AbsWebPage;
 
-class HomePage implements WebPage 
+class HomePage extends AbsWebPage 
 {
-    private $title, $header, $content, $footer;
+    private $content;
 
     public function __construct($data)
     {
-        $this->title = $data['title'];
+        parent::__construct($data['title']);
         $this->header = $data['header'];
         $this->content = $data['content'];
         $this->footer = $data['footer'];
     }
 
-    public function buildWebPage()
-    {
-        $page = $this->homePageHeader() . PHP_EOL;
-        $page .= $this->homePageContent(). PHP_EOL;
-    }
-
-    private function homePageHeader()
-    {
-        return "<h1> $this->header";
-    }
-
-    private function homePageContent()
+    protected function pageContent()
     {
         return "<h1> $this->content";
     }
+
 }

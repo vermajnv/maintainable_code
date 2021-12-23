@@ -1,10 +1,12 @@
 <?php
 
-require('./vendor/autoload.php');
+require('../../vendor/autoload.php');
 
-use pages\{HomePage, ContactPage};
+use src\pages\HomePage as HomePage;
+use pages\ContactPage;
+use contract\WebPage;
 
-function printWebPage($page) {
+function printWebPage(WebPage $page) {
     $pageContent = $page->buildWebPage();
     echo $pageContent;
 }

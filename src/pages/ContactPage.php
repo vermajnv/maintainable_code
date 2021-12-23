@@ -1,34 +1,24 @@
 <?php
 
-namespace pages;
+namespace App\pages;
 
-use contract\WebPage;
+use App\partial\AbsWebPage;
 
-class ContactPage implements WebPage
+class ContactPage extends AbsWebPage
 {
-    private $title, $header, $content, $footer;
+    private $content;
 
     public function __construct($data)
     {
-        $this->title = $data['title'];
+        parent::__construct($data['title']);
         $this->header = $data['header'];
         $this->content = $data['content'];
         $this->footer = $data['footer'];
     }
 
-    public function buildWebPage()
-    {
-        $page = $this->contactPageHeader() . PHP_EOL;
-        $page .= $this->contactPageContent(). PHP_EOL;
-    }
-
-    private function contactPageHeader()
-    {
-        return "<h1> $this->header";
-    }
-
-    private function contactPageContent()
+    protected function pageContent()
     {
         return "<h1> $this->content";
     }
+
 }

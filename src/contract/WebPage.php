@@ -1,7 +1,8 @@
 <?php
 
-namespace contract;
+namespace App\contract;
+
 
 interface WebPage {
-    function buildWebPage();
+    public function buildWebPage();
 }
