@@ -5,7 +5,7 @@ require('../vendor/autoload.php');
 use App\pages\HomePage as HomePage;
 use App\pages\ContactPage;
 use App\contract\WebPage;
-use App\validator\{RequiredValidator, NumericValidator};
+use App\validator\{RequiredValidator, NumericValidator, StringValidator};
 function printWebPage(WebPage $page) {
     $pageContent = $page->buildWebPage();
     echo $pageContent;
@@ -33,10 +33,12 @@ echo "-----------Printing Home Page---------" . PHP_EOL;
 
 try {
     $validationResult = new RequiredValidator(
-        new NumericValidator()
+        new NumericValidator(
+            new StringValidator()
+        )
     );
 
-    $result = $validationResult->validate('');
+    $result = $validationResult->validate(32);
     echo '<pre>';
     print_r($result);
 } catch (\Throwable $th) {

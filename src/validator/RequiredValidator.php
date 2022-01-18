@@ -1,15 +1,16 @@
 <?php
 
 namespace App\validator;
+
+use App\partial\Validator;
 use App\validator\IValidator;
 use App\validator\ValidationMessages;
 
-class RequiredValidator implements IValidator {
-    private $nextValidator;
+class RequiredValidator extends Validator {
 
-    public function __construct(IValidator $nextValidator = null)
+    public function __construct(IValidator $validator)
     {
-        $this->nextValidator = $nextValidator;
+        parent::__construct($validator);
     }
 
     public function validate($value)
@@ -18,8 +19,4 @@ class RequiredValidator implements IValidator {
         
     }
 
-    private function runNextValidation($value)
-    {
-        return $this->nextValidator->validate($value);
-    }
 }
